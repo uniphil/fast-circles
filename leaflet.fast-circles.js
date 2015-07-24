@@ -11,7 +11,7 @@ L.FastCircles = L.Class.extend({
 
   options: {
     radius: 16,
-    _eachLayer: function() {},
+    onEachFeature: function() {},
   },
 
   /**
@@ -22,7 +22,8 @@ L.FastCircles = L.Class.extend({
     this._group = L.layerGroup();
     this._centres = centres.map(function(centre) {
       return {
-        latlng: L.latLng(centre),
+        latlng: L.latLng([centre[0], centre[1]]),
+        feature: centre[2],
         layer: null,
       };
     });
@@ -61,7 +62,7 @@ L.FastCircles = L.Class.extend({
   _showCircle: function(centre) {
     if (centre.layer === null) {
       centre.layer = L.circleMarker(centre.latlng, this.options);
-      this.options._eachLayer(centre.layer);
+      this.options.onEachFeature(centre.feature, centre.layer);
     }
     this._group.addLayer(centre.layer);
   },
