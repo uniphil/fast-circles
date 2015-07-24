@@ -1,0 +1,30 @@
+{
+  "name": "fast-circles",
+  "version": "0.0.2",
+  "homepage": "https://github.com/uniphil/fast-circles",
+  "authors": [
+    "phil <uniphil@gmail.com>"
+  ],
+  "description": "draw lots of markers quickly without clustering",
+  "main": "leaflet.fast-circles.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "leaflet",
+    "fast",
+    "circle",
+    "markers"
+  ],
+  "license": ".",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet": "~0.7.3"
+  }
+}
