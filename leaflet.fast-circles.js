@@ -11,9 +11,6 @@ L.FastCircles = L.Class.extend({
 
   options: {
     radius: 16,
-    opacity: 1,
-    fillColor: 'lightblue',
-    fillOpacity: 1,
     _eachLayer: function() {},
   },
 
