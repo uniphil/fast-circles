@@ -1,0 +1,29 @@
+{
+  "name": "fast-circles",
+  "version": "0.0.1",
+  "description": "draw lots of markers quickly without clustering",
+  "main": "leaflet.fast-circles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uniphil/fast-circles.git"
+  },
+  "keywords": [
+    "leaflet",
+    "fast",
+    "circle",
+    "markers"
+  ],
+  "author": "phil",
+  "bugs": {
+    "url": "https://github.com/uniphil/fast-circles/issues"
+  },
+  "homepage": "https://github.com/uniphil/fast-circles#readme",
+  "devDependencies": {
+    "browserify": "^11.0.0",
+    "leaflet": "^0.7.3",
+    "uglifyjs": "^2.4.10"
+  }
+}
