@@ -23,10 +23,58 @@ L.FastCircles = L.Class.extend({
     this._centres = centres.map(function(centre) {
       return {
         latlng: L.latLng([centre[0], centre[1]]),
-        feature: centre[2],
+        id: centre[2],
         layer: null,
       };
     });
+    this._byId = this._centres.reduce(function(map, c) {
+      map[c.id] = c;
+      return map;
+    }, {});
+  },
+
+  /**
+   * Ensure that the circle at this ID is rendered on the map
+   */
+  showCircle: function(id) {
+    this._showCircle(this._byId[id]);
+  },
+
+  /**
+   * Iterate all the circles, recieving a {latlng, id, layer} object for each
+   *
+   * the `layer` property will be null if it has not been added to the map
+   */
+  eachCircle: function(cb) {
+    this._centres.forEach(cb);
+  },
+
+  /**
+   * Get a circle by ID in the same format as `eachCircle`
+   */
+  getCircle: function(id) {
+    return this._byId[id];
+  },
+
+  /**
+   * Iterate all circles currently rendered on the map
+   *
+   * `cb` gets two param: (id, layer)
+   */
+  eachVisibleLayer: function(cb) {
+    this.group.eachLayer(function(l) {
+      cb(l.circleId, l);
+    });
+  },
+
+  /**
+   * Get the leaflet layer for a circle with given ID.
+   *
+   * If the circle was pruned, it is added to the map before returning.
+   */
+  getLayer: function(id) {
+    this.showCircle(id);
+    return this._byId[id].layer;
   },
 
   /**
@@ -62,7 +110,8 @@ L.FastCircles = L.Class.extend({
   _showCircle: function(centre) {
     if (centre.layer === null) {
       centre.layer = L.circleMarker(centre.latlng, this.options);
-      this.options.onEachFeature(centre.feature, centre.layer);
+      centre.layer.circleId = centre.id;
+      this.options.onEachFeature(centre.id, centre.layer);
     }
     this._group.addLayer(centre.layer);
   },
