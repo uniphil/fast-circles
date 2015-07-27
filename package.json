@@ -1,6 +1,6 @@
 {
   "name": "fast-circles",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "draw lots of markers quickly without clustering",
   "main": "leaflet.fast-circles.min.js",
   "scripts": {
