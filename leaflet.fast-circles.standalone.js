@@ -63,7 +63,7 @@ L.FastCircles = L.Class.extend({
    * `cb` gets two param: (id, layer)
    */
   eachVisibleLayer: function(cb) {
-    this.group.eachLayer(function(l) {
+    this._group.eachLayer(function(l) {
       cb(l.circleId, l);
     });
   },
